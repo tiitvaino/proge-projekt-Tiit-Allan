@@ -19,10 +19,32 @@ def browse_file(): #See funktsioon tagastab valitud faili path'i
 
 def alert(): # Popup window esile kutsumine
     messagebox.showinfo("Nice huh?","Nüüd peaks analüüsimine toimuma.")
+    
+def info():
+    root2 = Tk()
+    root2.minsize(200,100)
+    root2.wm_title("Info")
 
+    rida1 = Label(root2, text = "GUI: Allan Loo").pack()
+    rida2 = Label(root2, text = "Backend: Tiit Vaino").pack()
+    rida3 = Label(root2, text = "COPYRIGHT © 2019 Tiit Vaino, Allan Loo").pack()
+    rida4 = Label(root2, text = "All right reserved").pack()
+
+    root2.mainloop()
+    
 root = Tk()
 root.wm_title("Andmetöötleja")
 root.minsize(500,300)
+root_menu = Menu(root)
+root.config(menu = root_menu)
+
+def function(): #Lihtsalt tühi funktsioon nuppudele määramiseks
+    pass
+
+file_menu = Menu(root_menu)
+root_menu.add_cascade(label = "Info", menu = file_menu) 
+file_menu.add_command(label = "Help", command = function())
+file_menu.add_command(label = "Info", command = info)
 
 top_frame = Frame(root,relief=RAISED,borderwidth=1)
 top_frame.pack(fill=BOTH, expand=True)
@@ -34,7 +56,6 @@ closeButton.pack(side=RIGHT, padx=5, pady=5)
 
 okButton = Button(bottom_frame, text="OK", command = alert)
 okButton.pack(side=RIGHT, padx=5, pady=5)
-
 
 riba = Label(top_frame, text = "Loomade andmete analüüsija", fg = "white", bg = "green")
 riba.pack(fill = "x")
