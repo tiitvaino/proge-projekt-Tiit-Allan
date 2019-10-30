@@ -56,25 +56,31 @@ lõpp_pealkirjad = ['Loomade arv kuu algul',\
                    ['väljaminek',['hukkumine', 'müük', 'teise rühma', 'lihaks']], \
                    'Loomade arv kuu lõpul']
 
-põhikarja_uted = [[0,[0,[0,0,0,0]],[0,[0,0,0,0,]],0],['Utt', 2]]
+põhikarja_uted = [[0,\#['Loomade arv kuu algul',\
+                   [0,[0,0,0,0]],\#['sissetulek kokku', ['sünd', 'ostetud','teisest rühmast', 'muu']], \
+                   [0,[0,0,0,0,]],\#['väljaminek',['hukkumine', 'müük', 'teise rühma', 'lihaks']], \
+                    0],\#'Loomade arv kuu lõpul']
+                   ['Utt', 2]]#sugu ja vanus(2=vana(pähikari),1=noor,0=tall)
 põhikarja_jäärad  = [[0,[0,[0,0,0,0]],[0,[0,0,0,0,]],0], ['Jäär', 2]] 
 utikud = [[0,[0,[0,0,0,0]],[0,[0,0,0,0,]],0], ['Utt', 1]]
 jäärikud = [[0,[0,[0,0,0,0]],[0,[0,0,0,0,]],0], ['Jäär', 1]] 
 utt_talled = [[0,[0,[0,0,0,0]],[0,[0,0,0,0,]],0], ['Utt', 0]]
 jäär_talled = [[0,[0,[0,0,0,0]],[0,[0,0,0,0,]],0], ['Jäär', 0]]
-
-lopp_andmed = [põhikarja_uted, põhikarja_jäärad, utikud, jäärikud, utt_talled, jäär_talled]
+kokku = [[0,[0,[0,0,0,0]],[0,[0,0,0,0,]],0]]
+lopp_andmed = [lõpp_pealkirjad, põhikarja_uted, põhikarja_jäärad, utikud, jäärikud, utt_talled, jäär_talled, kokku]
 
 f = open(fail, encoding = 'utf-8')
 pealkirjad = f.readline().strip().split(',')
 print(pealkirjad)
 
-for i, loomaandmed in enumerate(f):
-    üksikandmed = loomaandmed.strip().split('.')
-    if vahemikku_sobiv(üksikandmed[0], algus, lõpp):
-        sugu = üksikandmed[0].lowercase()
-        vanus = vanus(üksikandmed[2], üksikandmed[0])
+for i, loomaandmed in enumerate(f):#otsib välja looma liikumise põhjuse
+    üksikandmed = loomaandmed.strip().split('.')#järjend loomade liikumisest
+    if vahemikku_sobiv(üksikandmed[0], algus, lõpp):#kui sobib vahemikku hakkab otsima liikumise põhjust
+        sugu = üksikandmed[0].lowercase()# jäär(M) või utt(N)
+        vanus = vanus(üksikandmed[2], üksikandmed[0])# kas tall(0)/noorloom(1)/põhikarjaloom(2)
+        
         if 'müük' in üksikandmed[10].lowercase():
+            
         elif 'müük' in üksikandmed[10].lowercase():
         
         if sugu == 'jäär':
