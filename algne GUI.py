@@ -7,6 +7,7 @@ def quit(): #Programmi kinni panemiseks
     root.destroy()
 
 def browse_file(): #See funktsioon tagastab valitud faili path'i
+    global fname
     fpath = filedialog.askopenfilename(filetypes = (("CSV failid", "*.csv"), ("All files", "*")))
     fname = os.path.split(fpath)[1]
     if fpath == "":
