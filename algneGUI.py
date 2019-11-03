@@ -43,14 +43,13 @@ def alert(): # Popup window esile kutsumine
     
 def info():
     root2 = Tk()
-    root2.minsize(200,100)
     root2.wm_title("Info")
     root.resizable(0, 0)
 
     rida1 = Label(root2, text = "GUI: Allan Loo").pack()
     rida2 = Label(root2, text = "Backend: Tiit Vaino").pack()
     rida3 = Label(root2, text = "COPYRIGHT © 2019 Tiit Vaino, Allan Loo").pack()
-    rida4 = Label(root2, text = "All right reserved").pack()
+    rida4 = Label(root2, text = "All rights reserved").pack()
 
     root2.mainloop()
 
