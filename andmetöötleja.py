@@ -1,14 +1,27 @@
+from datetime import date
 # mis vanuses loom on
-def vanuse_arvutaja(sünnikuupäev, toimumiskuupäev): 
+###vajab tuunida kui aasta vahetub, siis kõik loomad lähevad vanemasse gruppi ehkki ei peaks
+def vanuse_arvutaja(sünnikuupäev, toimumiskuupäev):
+    """
+from datetime import date
+
+d0 = date(2008, 8, 18)
+d1 = date(2008, 9, 26)
+delta = d1 - d0
+print(delta.days
+"""
     toimumiskuupäev = toimumiskuupäev.split('.')
     aasta = int(toimumiskuupäev[2])
+    kuu = int(toimumiskuupäev[1])
+    päev = int(toimumiskuupäev[0])
     sünnikuupäev = sünnikuupäev.split('.')
     sünni_kuu = int(sünnikuupäev[1])
     sünni_aasta = int(sünnikuupäev[2])
+    ###vanuse arvutaja on puudulik
     aastates_vanus = aasta - sünni_aasta
-    if aastates_vanus < 1:
+    if aastates_vanus < 365:
         return 0
-    elif aastates_vanus < 2:
+    elif aastates_vanus < 365*2:
         return 1
     else:
         return 2
