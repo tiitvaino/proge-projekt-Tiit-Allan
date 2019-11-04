@@ -163,14 +163,14 @@ def andmetöötleja(algus, lõpp, fail, loomade_algne_hulk):
     f.close()
     return lõpp_andmed
 
-loomade_algne_hulk = {'põhikarja uted': 314, 'põhikarja jäärad': 10, 'utikud': 100, 'jäärikud': 20, 'utt_talled': 215, 'jäär_talled': 210 }
-algus = '01.09.2019'#(input('Sisesta alguskuupäev(pp.kk.aaaa): '))
-lõpp = '04.10.2019'#(input('Sisesta lõppkuupäev(pp.kk.aaaa): '))
+#loomade_algne_hulk = {'põhikarja uted': 314, 'põhikarja jäärad': 10, 'utikud': 100, 'jäärikud': 20, 'utt_talled': 215, 'jäär_talled': 210 }
+#algus = '01.09.2019'#(input('Sisesta alguskuupäev(pp.kk.aaaa): '))
+#lõpp = '04.10.2019'#(input('Sisesta lõppkuupäev(pp.kk.aaaa): '))
 ###ajutine algus ja lõpp, hiljem info GUI-st
-fail = 'algfaili näidis.csv'
+#fail = 'algfaili näidis.csv'
 ###ajutine fail, hiljem info GUI-st
 
-print (andmetöötleja(algus, lõpp, fail, loomade_algne_hulk))
+#print (andmetöötleja(algus, lõpp, fail, loomade_algne_hulk))
 
 """
 print(lõpp_pealkirjad)
