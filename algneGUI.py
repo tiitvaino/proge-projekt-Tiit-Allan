@@ -29,12 +29,14 @@ def browse_file(): #See funktsioon tagastab valitud faili path'i
 
 def select_file():
     global fsave
+    global fsavename
     fsave = filedialog.asksaveasfilename(initialfile="Andmed", title="Valige faili salvestamise kaust ja nimi", filetypes = (("CSV failid", "*.csv"), ("All files", "*")))
     fsavename = os.path.split(fsave)[1]
     if fsave == "":
         pass
     else:
-        loc.set(fsavename+".csv")
+        fsavename = (fsavename+".csv")
+        loc.set(fsavename)
         tabel2.pack(side=LEFT, padx = 2, pady = 2)
         tabel2.config(text = fsavename)
 
