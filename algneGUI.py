@@ -83,11 +83,16 @@ def numbers_dot(char):
 def del_ins(event):
     if algus.get() == "dd.mm.yyyy":
         algus.delete(0, "end")
+    elif lõpp.get() == "":
+        lõpp.insert(0, "dd.mm.yyyy")
     return None
 
 def del_ins2(event):
     if lõpp.get() == "dd.mm.yyyy":
         lõpp.delete(0, "end")
+    elif algus.get() == "":
+        algus.insert(0, "dd.mm.yyyy")
+    return None
 
 root = Tk()
 root.wm_title("Andmetöötleja")
