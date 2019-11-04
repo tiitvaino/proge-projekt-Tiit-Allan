@@ -69,6 +69,16 @@ def andmeanalüüs():
     e8.configure(text = andmed[1][2][1][2])
     e9.configure(text = andmed[1][2][1][3])
 
+def only_numbers(char):
+    return char.isdigit()
+
+def numbers_dot(char):
+    if char == ".":
+        return True
+    else:
+        return char.isdigit()
+
+
 root = Tk()
 root.wm_title("Andmetöötleja")
 root.minsize(500,300)
@@ -125,36 +135,39 @@ center_frame.grid_rowconfigure(2, weight=1)
 
 Label(center_frame, text='Sisestage loomade\narvud kuu alguses', font=("Helvetica 12 bold")).grid(column = 0, columnspan = 2, row=0, padx=5, sticky = S)
 
+validation = center_frame.register(only_numbers)
+validation2 = center_frame.register(numbers_dot)
+
 Label(center_frame, text='uted', font=("Helvetica 10 bold")).grid(column = 1, row=1, padx=5, sticky = S) 
-põhikarja_uted = Entry(center_frame, width = 4)
+põhikarja_uted = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
 põhikarja_uted.grid(row=2, column = 1, padx=5, sticky = S)
 
 Label(center_frame, text='jäärad', font=("Helvetica 10 bold")).grid(column = 0, row=1, padx=5, sticky = S) 
-põhikarja_jäärad = Entry(center_frame, width = 4)
+põhikarja_jäärad = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
 põhikarja_jäärad.grid(row=2, padx=5, sticky = S)
 
 Label(center_frame, text='utikud', font=("Helvetica 10 bold")).grid(column = 1, row=3, padx=5, sticky = S) 
-utikud = Entry(center_frame, width = 4)
+utikud = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
 utikud.grid(row=4, column = 1, padx=5, sticky = S)
 
 Label(center_frame, text='jäärikud', font=("Helvetica 10 bold")).grid(column = 0, row=3, padx=5, sticky = S) 
-jäärikud = Entry(center_frame, width = 4)
+jäärikud = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
 jäärikud.grid(row=4, padx=5, sticky = S)
 
 Label(center_frame, text='utt-talled', font=("Helvetica 10 bold")).grid(column = 1, row=5, padx=5, sticky = S) 
-utt_talled = Entry(center_frame, width = 4)
+utt_talled = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
 utt_talled.grid(row=6, column = 1, padx=5, sticky = S)
 
 Label(center_frame, text='jäär-talled', font=("Helvetica 10 bold")).grid(column = 0, row=5, padx=5, sticky = S) 
-jäär_talled = Entry(center_frame, width = 4)
+jäär_talled = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
 jäär_talled.grid(row=6, padx=5, sticky = S)
 
 Label(center_frame, text='Sisestage alguskuupäev', font=("Helvetica 10 bold")).grid(row=7, columnspan = 2, padx=5, sticky = S) 
-algus = Entry(center_frame)
+algus = Entry(center_frame, validate="key", validatecommand=(validation2, '%S'))
 algus.grid(row=8, padx=5, sticky = S, columnspan = 2)
 
 Label(center_frame, text='Sisestage lõppkuupäev', font=("Helvetica 10 bold")).grid(row=9, columnspan = 2, padx=5, sticky = S) 
-lõpp = Entry(center_frame)
+lõpp = Entry(center_frame, validate="key", validatecommand=(validation2, '%S'))
 lõpp.grid(row=10, padx=5, sticky = S, columnspan = 2)
 
 
