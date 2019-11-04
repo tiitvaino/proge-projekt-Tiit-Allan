@@ -41,7 +41,7 @@ def select_file():
         tabel2.config(text = fsavename)
 
 def alert(): # Popup window esile kutsumine
-    messagebox.showinfo("Nice huh?","Nüüd peaks analüüsimine toimuma.")
+    messagebox.showinfo("ei", "lihtsalt ei")
     
 def info():
     root2 = Tk()
@@ -75,9 +75,19 @@ def only_numbers(char):
 def numbers_dot(char):
     if char == ".":
         return True
+    elif char == "dd.mm.yyyy":
+        return True
     else:
         return char.isdigit()
+    
+def del_ins(event):
+    if algus.get() == "dd.mm.yyyy":
+        algus.delete(0, "end")
+    return None
 
+def del_ins2(event):
+    if lõpp.get() == "dd.mm.yyyy":
+        lõpp.delete(0, "end")
 
 root = Tk()
 root.wm_title("Andmetöötleja")
@@ -93,7 +103,7 @@ def function(): #Lihtsalt tühi funktsioon nuppudele määramiseks
 file_menu = Menu(root_menu)
 root_menu.add_cascade(label = "Info", menu = file_menu) 
 file_menu.add_command(label = "Help", command = function())
-file_menu.add_command(label = "Info", command = info)
+file_menu.add_command(label = "Info", command = alert)
 
 top_frame = Frame(root, borderwidth=1)
 top_frame.pack(fill=BOTH, expand=False)
@@ -165,10 +175,15 @@ jäär_talled.grid(row=6, padx=5, sticky = S)
 Label(center_frame, text='Sisestage alguskuupäev', font=("Helvetica 10 bold")).grid(row=7, columnspan = 2, padx=5, sticky = S) 
 algus = Entry(center_frame, validate="key", validatecommand=(validation2, '%S'))
 algus.grid(row=8, padx=5, sticky = S, columnspan = 2)
+algus.insert(0, "dd.mm.yyyy")
+algus.bind("<Button-1>", del_ins)
+
 
 Label(center_frame, text='Sisestage lõppkuupäev', font=("Helvetica 10 bold")).grid(row=9, columnspan = 2, padx=5, sticky = S) 
 lõpp = Entry(center_frame, validate="key", validatecommand=(validation2, '%S'))
 lõpp.grid(row=10, padx=5, sticky = S, columnspan = 2)
+lõpp.insert(0, "dd.mm.yyyy")
+lõpp.bind("<Button-1>", del_ins2)
 
 
 lamb = Image.open("lamb.png")
