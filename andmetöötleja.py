@@ -1,14 +1,7 @@
 from datetime import date
 # mis vanuses loom on
-###vajab tuunida kui aasta vahetub, siis kõik loomad lähevad vanemasse gruppi ehkki ei peaks
 def vanuse_arvutaja(sünnikuupäev, toimumiskuupäev):
     """
-from datetime import date
-
-d0 = date(2008, 8, 18)
-d1 = date(2008, 9, 26)
-delta = d1 - d0
-print(delta.days
 talled muutuvad noorteks kevadel kui uued talled peale tulevad  ehk märsikuus ca 9-12 kuud
 noored muutuvad vanadeks sügisel paaritusse minnes ca +-1,5 aastaselt
 
@@ -27,14 +20,13 @@ noored muutuvad vanadeks sügisel paaritusse minnes ca +-1,5 aastaselt
     sünnikuupäev = date(sünni_aasta, sünni_kuu, sünni_päev)
     päevades_vanus = toimumiskuupäev - sünnikuupäev
     
-    aasta = t_aasta
+
+    noorukiks =date(sünni_aasta+1,3,1)
+    põhikarja =date(sünni_aasta+1,9,1)
     
-    sünniaeg =(aasta,3,1)
-    paarituskuupäev =(aasta,9,1)
-    
-    if päevades_vanus <= 365*(10/12):
+    if toimumiskuupäev < noorukiks:
         return 0
-    elif päevades_vanus <= 365*(1+7/12):
+    elif toimumiskuupäev < põhikarja:
         return 1
     else:
         return 2
