@@ -96,7 +96,6 @@ def del_ins2(event):
 
 root = Tk()
 root.wm_title("Andmetöötleja")
-root.minsize(500,300)
 root_menu = Menu(root)
 root.config(menu = root_menu)
 root.resizable(0, 0)
@@ -191,7 +190,7 @@ lõpp.insert(0, "dd.mm.yyyy")
 lõpp.bind("<Button-1>", del_ins2)
 
 
-lamb = Image.open("lamb.png")
+lamb = Image.open("lamb.ico")
 resized = lamb.resize((150, 120),Image.ANTIALIAS)
 photo = ImageTk.PhotoImage(resized)
 lambLabel = Label(top_frame, image = photo, bg = "white")
