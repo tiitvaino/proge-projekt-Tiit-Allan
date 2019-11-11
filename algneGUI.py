@@ -58,16 +58,16 @@ def info():
 def andmeanalüüs():
     loomade_algne_hulk = {'põhikarja uted': int(põhikarja_uted.get()), 'põhikarja jäärad': int(põhikarja_jäärad.get()), 'utikud': int(utikud.get()), 'jäärikud': int(jäärikud.get()), 'utt_talled': int(utt_talled.get()), 'jäär_talled': int(jäär_talled.get())}
     andmed = andmetöötleja(algus.get(), lõpp.get(), fname, loomade_algne_hulk)
-    e0.configure(text = andmed[1][1][0])
-    e1.configure(text = andmed[1][1][1][0])
-    e2.configure(text = andmed[1][1][1][1])
-    e3.configure(text = andmed[1][1][1][2])
-    e4.configure(text = andmed[1][1][1][3])
-    e5.configure(text = andmed[1][2][0])
-    e6.configure(text = andmed[1][2][1][0])
-    e7.configure(text = andmed[1][2][1][1])
-    e8.configure(text = andmed[1][2][1][2])
-    e9.configure(text = andmed[1][2][1][3])
+    e0.configure(text = andmed[7][1][0])
+    e1.configure(text = andmed[7][1][1][0])
+    e2.configure(text = andmed[7][1][1][1])
+    e3.configure(text = andmed[7][1][1][2])
+    e4.configure(text = andmed[7][1][1][3])
+    e5.configure(text = andmed[7][2][0])
+    e6.configure(text = andmed[7][2][1][0])
+    e7.configure(text = andmed[7][2][1][1])
+    e8.configure(text = andmed[7][2][1][2])
+    e9.configure(text = andmed[7][2][1][3])
 
 def only_numbers(char):
     return char.isdigit()
@@ -83,11 +83,16 @@ def numbers_dot(char):
 def del_ins(event):
     if algus.get() == "dd.mm.yyyy":
         algus.delete(0, "end")
+    elif lõpp.get() == "":
+        lõpp.insert(0, "dd.mm.yyyy")
     return None
 
 def del_ins2(event):
     if lõpp.get() == "dd.mm.yyyy":
         lõpp.delete(0, "end")
+    elif algus.get() == "":
+        algus.insert(0, "dd.mm.yyyy")
+    return None
 
 root = Tk()
 root.wm_title("Andmetöötleja")
