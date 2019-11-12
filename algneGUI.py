@@ -41,7 +41,7 @@ def select_file():
         tabel2.config(text = fsavename)
 
 def alert(): # Popup window esile kutsumine
-    messagebox.showinfo("ei", "lihtsalt ei")
+    messagebox.showinfo("Küsige julgelt", "Abi saamiseks helistage numbrile: 5454 1010")
     
 def info():
     root2 = Tk()
@@ -106,8 +106,8 @@ def function(): #Lihtsalt tühi funktsioon nuppudele määramiseks
 
 file_menu = Menu(root_menu)
 root_menu.add_cascade(label = "Info", menu = file_menu) 
-file_menu.add_command(label = "Help", command = function())
-file_menu.add_command(label = "Info", command = alert)
+file_menu.add_command(label = "Help", command = alert)
+file_menu.add_command(label = "Info", command = info)
 
 top_frame = Frame(root, borderwidth=1)
 top_frame.pack(fill=BOTH, expand=False)
@@ -154,26 +154,32 @@ validation2 = center_frame.register(numbers_dot)
 
 Label(center_frame, text='uted', font=("Helvetica 10 bold")).grid(column = 1, row=1, padx=5, sticky = S) 
 põhikarja_uted = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
+põhikarja_uted.insert(0,0)
 põhikarja_uted.grid(row=2, column = 1, padx=5, sticky = S)
 
 Label(center_frame, text='jäärad', font=("Helvetica 10 bold")).grid(column = 0, row=1, padx=5, sticky = S) 
 põhikarja_jäärad = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
+põhikarja_jäärad.insert(0,0)
 põhikarja_jäärad.grid(row=2, padx=5, sticky = S)
 
 Label(center_frame, text='utikud', font=("Helvetica 10 bold")).grid(column = 1, row=3, padx=5, sticky = S) 
 utikud = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
+utikud.insert(0,0)
 utikud.grid(row=4, column = 1, padx=5, sticky = S)
 
 Label(center_frame, text='jäärikud', font=("Helvetica 10 bold")).grid(column = 0, row=3, padx=5, sticky = S) 
 jäärikud = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
+jäärikud.insert(0,0)
 jäärikud.grid(row=4, padx=5, sticky = S)
 
 Label(center_frame, text='utt-talled', font=("Helvetica 10 bold")).grid(column = 1, row=5, padx=5, sticky = S) 
 utt_talled = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
+utt_talled.insert(0,0)
 utt_talled.grid(row=6, column = 1, padx=5, sticky = S)
 
 Label(center_frame, text='jäär-talled', font=("Helvetica 10 bold")).grid(column = 0, row=5, padx=5, sticky = S) 
 jäär_talled = Entry(center_frame, width = 4, validate="key", validatecommand=(validation, '%S'))
+jäär_talled.insert(0,0)
 jäär_talled.grid(row=6, padx=5, sticky = S)
 
 Label(center_frame, text='Sisestage alguskuupäev', font=("Helvetica 10 bold")).grid(row=7, columnspan = 2, padx=5, sticky = S) 
