@@ -14,7 +14,7 @@ def save():
     if fsave == "":
         pass
     else:
-        salvestaja(kõik_andmed, fsavename)
+        salvestaja(kõik_andmed, fsave)
 
 def quit(): #Programmi kinni panemiseks
     root.destroy()
@@ -206,7 +206,7 @@ lõpp.insert(0, "dd.mm.yyyy")
 lõpp.bind("<Button-1>", del_ins2)
 
 
-lamb = Image.open("lamb.ico")
+lamb = Image.open("rehekivi.bmp")
 resized = lamb.resize((150, 120),Image.ANTIALIAS)
 photo = ImageTk.PhotoImage(resized)
 lambLabel = ttk.Label(top_frame, image = photo, background = "white", anchor="center")

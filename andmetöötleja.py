@@ -179,7 +179,7 @@ def salvestaja(lõppandmed, lõpp_fail):
             else:
                 saved_text += str(osa) + ','
         saved_text += '\n' 
-    f = open(lõpp_fail, 'w')
+    f = open(lõpp_fail+".csv", 'w')
     f.write(saved_text)
     f.close()
 
