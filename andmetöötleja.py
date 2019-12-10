@@ -35,34 +35,31 @@ noored muutuvad vanadeks sügisel paaritusse minnes ca +-1,5 aastaselt
 def vahemikku_sobiv(toimumiskuupäev, algus, lõpp):
     algus = algus.split('.')
     lõpp = lõpp.split('.')
+    
     toimumiskuupäev = toimumiskuupäev.strip().split('.')
     aasta = int(toimumiskuupäev[2])
     kuu = int(toimumiskuupäev[1])
     päev = int(toimumiskuupäev[0])
+    toimumiskuupäev = date(aasta, kuu, päev)
+    
     algus_aasta = int(algus[2])
     lõpp_aasta = int(lõpp[2])
     algus_kuu = int(algus[1])
     lõpp_kuu = int(lõpp[1])
     algus_päev = int(algus[0])
     lõpp_päev = int(lõpp[0])
-    if aasta > algus_aasta and aasta < lõpp_aasta:# lõpp ja algus aasta
-        return True
+    alguskuupäev = date(algus_aasta, algus_kuu, algus_päev)
+    lõppkuupäev = date(lõpp_aasta, lõpp_kuu, lõpp_päev)
     
-    elif aasta == algus_aasta:#sama algus aasta
-        if kuu > algus_kuu:#kuu
-            return True
-        elif kuu == algus_kuu:#kuu
-            if päev >= algus_päev:#päeva võrdlus
-                return True
-            
-    elif aasta == lõpp_aasta:#sama lõpp aasta
-        if kuu < lõpp_kuu:#kuu
-            return True
-        elif kuu == lõpp_kuu:#kuu
-            if päev <= lõpp_päev:#päeva võrdlus
-                return True
+    if aasta > algus_aasta and aasta < lõpp_aasta:# kui toimub soovitud aastate vahel, aga ei võrdu sellega
+        return True
+
+    elif toimumiskuupäev >= alguskuupäev and toimumiskuupäev <= lõppkuupäev:
+        return True
+
     else:
         return False
+    
 
 # lisab +1 õigesse loomarühma ja liikumispõhjusesse
 def andmete_lisaja(liikumis_põhjus, sugu, vanus, loomagruppide_sõnastik, pealkirjade_sõnastik):
@@ -187,8 +184,8 @@ def salvestaja(lõppandmed, lõpp_fail):
     f.close()
 
 #loomade_algne_hulk = {'põhikarja uted': 314, 'põhikarja jäärad': 10, 'utikud': 100, 'jäärikud': 20, 'utt_talled': 215, 'jäär_talled': 210 }
-#algus = '01.09.2019'#(input('Sisesta alguskuupäev(pp.kk.aaaa): '))
-#lõpp = '04.10.2019'#(input('Sisesta lõppkuupäev(pp.kk.aaaa): '))
+#algus = '01.01.2019'#(input('Sisesta alguskuupäev(pp.kk.aaaa): '))
+#lõpp = '01.2.2019'#(input('Sisesta lõppkuupäev(pp.kk.aaaa): '))
 ###ajutine algus ja lõpp, hiljem info GUI-st
 #fail = 'algfaili näidis.csv'
 ###ajutine fail, hiljem info GUI-st
