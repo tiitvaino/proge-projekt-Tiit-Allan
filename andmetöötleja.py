@@ -168,6 +168,24 @@ def andmetöötleja(algus, lõpp, fail, loomade_algne_hulk):
     f.close()
     return lõpp_andmed
 
+def salvestaja(lõppandmed, lõpp_fail):
+    saved_text = ''
+    for grupp in lõppandmed:
+        for osa in grupp:
+            if isinstance(osa, list):
+                for alamosa in osa:
+                    if isinstance(alamosa, list):
+                        for j in alamosa:
+                            saved_text += str(j)+ ','
+                    else:
+                        saved_text += str(alamosa) + ','
+            else:
+                saved_text += str(osa) + ','
+        saved_text += '\n' 
+    f = open(lõpp_fail, 'w')
+    f.write(saved_text)
+    f.close()
+
 #loomade_algne_hulk = {'põhikarja uted': 314, 'põhikarja jäärad': 10, 'utikud': 100, 'jäärikud': 20, 'utt_talled': 215, 'jäär_talled': 210 }
 #algus = '01.09.2019'#(input('Sisesta alguskuupäev(pp.kk.aaaa): '))
 #lõpp = '04.10.2019'#(input('Sisesta lõppkuupäev(pp.kk.aaaa): '))

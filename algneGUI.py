@@ -4,13 +4,15 @@ from tkinter import messagebox
 import os
 from PIL import Image, ImageTk
 from andmetöötleja import *
+kõik_andmed = []
 
 def save():
+    global fsavename
+    global kõik_andmed
     if fsave == "":
         pass
     else:
-        f = open(fsave+".csv", "w")
-        f.close()
+        salvestaja(kõik_andmed, fsavename)
 
 def quit(): #Programmi kinni panemiseks
     root.destroy()
@@ -56,6 +58,8 @@ def info():
     root2.mainloop()
 
 def andmeanalüüs():
+    global kõik_andmed
+    global fsavename
     loomade_algne_hulk = {'põhikarja uted': int(põhikarja_uted.get()), 'põhikarja jäärad': int(põhikarja_jäärad.get()), 'utikud': int(utikud.get()), 'jäärikud': int(jäärikud.get()), 'utt_talled': int(utt_talled.get()), 'jäär_talled': int(jäär_talled.get())}
     andmed = andmetöötleja(algus.get(), lõpp.get(), fname, loomade_algne_hulk)
     e0.configure(text = andmed[7][1][0])
@@ -68,6 +72,8 @@ def andmeanalüüs():
     e7.configure(text = andmed[7][2][1][1])
     e8.configure(text = andmed[7][2][1][2])
     e9.configure(text = andmed[7][2][1][3])
+    kõik_andmed = andmed
+    salvestaja(kõik_andmed, fsavename)
 
 def only_numbers(char):
     return char.isdigit()
@@ -119,7 +125,7 @@ bottom_frame.pack(fill=BOTH, expand=False)
 closeButton = Button(bottom_frame, text="Close", command = quit)
 closeButton.pack(side=RIGHT, padx=5, pady=5)
 
-okButton = Button(bottom_frame, text="OK", command = lambda:[andmeanalüüs(),save()])
+okButton = Button(bottom_frame, text="OK", command = lambda:[andmeanalüüs(), save()])
 okButton.pack(side=RIGHT, padx=5, pady=5)
 
 riba = Label(top_frame, text = "Loomade andmete analüüsija", fg = "white", bg = "green")
