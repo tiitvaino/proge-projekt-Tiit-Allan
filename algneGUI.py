@@ -21,6 +21,7 @@ def quit(): #Programmi kinni panemiseks
 
 def browse_file(): #See funktsioon tagastab valitud faili path'i
     global fname
+    global fpath
     fpath = filedialog.askopenfilename(filetypes = (("CSV failid", "*.csv"), ("All files", "*")))
     fname = os.path.split(fpath)[1]
     if fpath == "":
@@ -62,8 +63,9 @@ def info():
 def andmeanalüüs():
     global kõik_andmed
     global fsavename
+    global fpath
     loomade_algne_hulk = {'põhikarja uted': int(põhikarja_uted.get()), 'põhikarja jäärad': int(põhikarja_jäärad.get()), 'utikud': int(utikud.get()), 'jäärikud': int(jäärikud.get()), 'utt_talled': int(utt_talled.get()), 'jäär_talled': int(jäär_talled.get())}
-    andmed = andmetöötleja(algus.get(), lõpp.get(), fname, loomade_algne_hulk)
+    andmed = andmetöötleja(algus.get(), lõpp.get(), fpath, loomade_algne_hulk)
     e0.configure(text = andmed[7][1][0])
     e1.configure(text = andmed[7][1][1][0])
     e2.configure(text = andmed[7][1][1][1])
